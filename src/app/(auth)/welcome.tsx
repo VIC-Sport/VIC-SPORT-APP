@@ -1,12 +1,8 @@
+import ShareButton from "@/components/button/share.button";
 import BannerWelcome from "@/components/welcome/banner";
+import { APP_COLOR } from "@/utils/constant";
 import { router } from "expo-router";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 
 const WelcomeScreen = () => {
   return (
@@ -17,12 +13,48 @@ const WelcomeScreen = () => {
         </View>
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => router.replace("/(tabs)")}
-          >
-            <Text style={styles.buttonText}>Getting Started</Text>
-          </TouchableOpacity>
+          <ShareButton
+            onPress={() => router.navigate("/(auth)/login")}
+            title="ĐĂNG NHẬP"
+            textStyle={{
+              color: "#fff",
+              paddingVertical: 5,
+              fontWeight: "bold",
+              fontSize: 16
+            }}
+            btnStyle={{
+              justifyContent: "center",
+              borderRadius: 30,
+              marginHorizontal: 35,
+              paddingVertical: 12,
+              backgroundColor: APP_COLOR.PURPLE,
+              borderWidth: 1,
+              borderColor: "#505050",
+              width: "82%",
+            }}
+            pressStyle={{ alignSelf: "stretch" }}
+          />
+          <ShareButton
+            onPress={() => router.navigate("/(auth)/login")}
+            title="ĐĂNG KÝ"
+            textStyle={{
+              color: APP_COLOR.PURPLE,
+              paddingVertical: 5,
+              fontWeight: "bold",
+              fontSize: 16
+            }}
+            btnStyle={{
+              justifyContent: "center",
+              borderRadius: 30,
+              marginHorizontal: 35,
+              paddingVertical: 12,
+              backgroundColor: "#fff",
+              borderWidth: 1,
+              borderColor: "#505050",
+              width: "82%"
+            }}
+            pressStyle={{ alignSelf: "stretch" }}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -37,21 +69,23 @@ const styles = StyleSheet.create({
     backgroundColor: "white"
   },
   carouselContainer: {
-    flex: 1
+    flex: 0.8
   },
   buttonContainer: {
-    paddingVertical: 110,
-    alignItems: "center"
-  },
-  button: {
-    backgroundColor: "#8685E7",
-    paddingVertical: 14,
-    paddingHorizontal: 40,
-    borderRadius: 30
+    flex: 0.2,
+    alignItems: "center",
+    gap: 16,
+    paddingVertical: 50
   },
   buttonText: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold"
+  },
+  loginButton: {
+    backgroundColor: APP_COLOR.PURPLE
+  },
+  registerButton: {
+    backgroundColor: "#4CAF50" // hoặc màu bạn muốn cho nút đăng ký
   }
 });
