@@ -1,6 +1,7 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "baseUrl": "./src", // thêm trường này để có đường link tuyệt đối
     "strict": true,
     "paths": {
       "@/*": [
