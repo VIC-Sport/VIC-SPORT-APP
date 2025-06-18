@@ -9,12 +9,14 @@ import Toast from "react-native-root-toast";
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 80,
     paddingVertical: 30,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    alignItems: "center"
   },
   heading: {
-    fontSize: 25,
-    fontWeight: "600",
+    fontSize: 35,
+    fontWeight: "bold",
     marginVertical: 20
   }
 });
@@ -75,9 +77,9 @@ const VerifyScreen = () => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.heading}>Xác thực tài khoản</Text>
+        <Text style={styles.heading}>Verify Email</Text>
         <Text style={{ marginVertical: 10 }}>
-          Vui lòng nhập mã xác nhận đã được gửi tới địa chỉ{" "}
+          Enter verification code we have sent to your email ....
         </Text>
         <View style={{ marginVertical: 20 }}>
           <OTPTextView
@@ -98,13 +100,13 @@ const VerifyScreen = () => {
           />
         </View>
         <View style={{ flexDirection: "row", marginVertical: 10 }}>
-          <Text>Không nhận được mã xác nhận,</Text>
+          <Text>Didn't receive the OTP?</Text>
           <Text
-            style={{ textDecorationLine: "underline" }}
+            style={{ textDecorationLine: "underline", color: APP_COLOR.PURPLE }}
             onPress={handleResendCode}
           >
             {" "}
-            gửi lại
+            Resend OTP
           </Text>
         </View>
       </View>
