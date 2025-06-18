@@ -16,13 +16,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 20,
+    paddingVertical: 50,
     gap: 10
   }
 });
 
 const LoginScreen = () => {
-  // const [email, setEmail] = useState<string>("");
-  // const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const { setAppState } = useCurrentApp();
 
@@ -41,7 +40,7 @@ const LoginScreen = () => {
           duration: Toast.durations.LONG,
           textColor: "white",
           backgroundColor: APP_COLOR.PURPLE,
-          opacity: 1 // tham so cua thu vien. opacity là độ mờ của backgourd mặc định là 0.8
+          opacity: 1
         });
 
         if (res.statusCode === 400) {
@@ -64,42 +63,18 @@ const LoginScreen = () => {
         onSubmit={(values) => handleLogin(values.email, values.password)}
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
-          // <View style={{ margin: 10 }}>
-          //   <Text>Email</Text>
-          //   <TextInput
-          //     style={{ borderWidth: 1, borderColor: "#ccc" }}
-          //     onChangeText={handleChange("email")}
-          //     onBlur={handleBlur("email")}
-          //     value={values.email}
-          //     keyboardType="email-address"
-          //   />
-          //   {errors.email && (
-          //     <Text style={{ color: "red" }}>{errors.email}</Text>
-          //   )}
-          //   <View style={{ marginVertical: 10 }}></View>
-          //   <Text>Password</Text>
-          //   <TextInput
-          //     style={{ borderWidth: 1, borderColor: "#ccc" }}
-          //     onChangeText={handleChange("password")}
-          //     onBlur={handleBlur("password")}
-          //     value={values.password}
-          //   />
-          //   {errors.password && (
-          //     <Text style={{ color: "red" }}>{errors.password}</Text>
-          //   )}
-          //   <Button onPress={handleSubmit as any} title="Submit" />
-          // </View>
           <View style={styles.container}>
-            <View style={{ padding: 5 }}>
+            <View style={{ marginVertical: 30, padding: 5 }}>
               <Text
                 style={{
                   fontSize: 25,
-                  fontWeight: 600,
-                  marginVertical: 30
+                  fontWeight: "bold",
+                  alignItems: "center"
                 }}
               >
-                Đăng nhập
+                Login an account
               </Text>
+              <Text>Welcome back, you've been missed!</Text>
             </View>
 
             <ShareInput
@@ -126,10 +101,10 @@ const LoginScreen = () => {
 
             <ShareButton
               loading={loading}
-              title="ĐĂNG NHẬP"
+              title="Login"
               // onPress={handleLogin as any}
               onPress={handleSubmit as any}
-              textStyle={{ color: "#fff", paddingVertical: 5 }}
+              textStyle={{ color: "black", paddingVertical: 5 }}
               btnStyle={{
                 justifyContent: "center",
                 borderRadius: 30,
@@ -151,17 +126,20 @@ const LoginScreen = () => {
               }}
             >
               <Text style={{ textAlign: "center", color: "black" }}>
-                Chưa có tài khoản?
+                Don't have an account?
               </Text>
               <Link href={"/(auth)/register"}>
                 <Text
-                  style={{ textDecorationLine: "underline", color: "black" }}
+                  style={{
+                    textDecorationLine: "underline",
+                    color: APP_COLOR.PURPLE
+                  }}
                 >
-                  Đăng ký
+                  Register
                 </Text>
               </Link>
             </View>
-            <SocialButton title="Đăng nhập với" />
+            <SocialButton title="Login with" />
           </View>
         )}
       </Formik>

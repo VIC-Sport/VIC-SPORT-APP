@@ -1,91 +1,163 @@
 import ShareButton from "@/components/button/share.button";
-import BannerWelcome from "@/components/welcome/banner";
 import { APP_COLOR } from "@/utils/constant";
-import { router } from "expo-router";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { Link, router } from "expo-router";
+import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 
-const WelcomeScreen = () => {
+const WelcomePage = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <View style={styles.carouselContainer}>
-          <BannerWelcome />
-        </View>
+    <ImageBackground
+      style={styles.background}
+      source={require("@/assets/images/icon.png")}
+    >
+      <LinearGradient
+        style={styles.overlay}
+        colors={["transparent", "rgba(0, 0, 0, 0.9)"]}
+        locations={[0.2, 0.8]}
+      >
+        <View style={styles.container}>
+          <View style={styles.welcomeText}>
+            <Text style={styles.heading}>Welcome!</Text>
+            <Text style={styles.footer}>
+              You are only a few steps away from VIC Sports
+            </Text>
+          </View>
+          <View style={styles.welcomeBtn}>
+            <View>
+              <View style={{ paddingBottom: 30 }}>
+                <ShareButton
+                  title="Continue with Email"
+                  onPress={() => router.navigate("/(auth)/login")}
+                  textStyle={{ color: "black", paddingVertical: 5 }}
+                  pressStyle={{ alignSelf: "stretch" }}
+                  btnStyle={{
+                    justifyContent: "center",
+                    borderRadius: 20,
+                    marginHorizontal: 35,
+                    paddingVertical: 12,
+                    backgroundColor: APP_COLOR.PURPLE,
+                    borderWidth: 1,
+                    borderColor: "#505050",
+                    width: "82%",
+                    alignItems: "center"
+                  }}
+                  icons={
+                    <Image
+                      source={require("@/assets/auth/email-logo.png")}
+                      style={{ width: 35, height: 30, resizeMode: "contain" }}
+                    />
+                  }
+                />
+              </View>
 
-        <View style={styles.buttonContainer}>
-          <ShareButton
-            onPress={() => router.navigate("/(auth)/login")}
-            title="ĐĂNG NHẬP"
-            textStyle={{
-              color: "#fff",
-              paddingVertical: 5,
-              fontWeight: "bold",
-              fontSize: 16
-            }}
-            btnStyle={{
-              justifyContent: "center",
-              borderRadius: 30,
-              marginHorizontal: 35,
-              paddingVertical: 12,
-              backgroundColor: APP_COLOR.PURPLE,
-              borderWidth: 1,
-              borderColor: "#505050",
-              width: "82%",
-            }}
-            pressStyle={{ alignSelf: "stretch" }}
-          />
-          <ShareButton
-            onPress={() => router.navigate("/(auth)/login")}
-            title="ĐĂNG KÝ"
-            textStyle={{
-              color: APP_COLOR.PURPLE,
-              paddingVertical: 5,
-              fontWeight: "bold",
-              fontSize: 16
-            }}
-            btnStyle={{
-              justifyContent: "center",
-              borderRadius: 30,
-              marginHorizontal: 35,
-              paddingVertical: 12,
-              backgroundColor: "#fff",
-              borderWidth: 1,
-              borderColor: "#505050",
-              width: "82%"
-            }}
-            pressStyle={{ alignSelf: "stretch" }}
-          />
+              <View style={{ paddingBottom: 30 }}>
+                <ShareButton
+                  title="Continue with Facebook"
+                  onPress={() => alert("me")}
+                  btnStyle={{
+                    justifyContent: "center",
+                    borderRadius: 20,
+                    marginHorizontal: 35,
+                    paddingVertical: 12,
+                    backgroundColor: "#fff",
+                    borderWidth: 1,
+                    borderColor: "#505050",
+                    width: "82%",
+                    alignItems: "center"
+                  }}
+                  icons={
+                    <Image
+                      source={require("@/assets/auth/facebook-logo.png")}
+                      style={{ width: 30, height: 30, resizeMode: "contain" }}
+                    />
+                  }
+                />
+              </View>
+
+              <ShareButton
+                title="Continue with Google"
+                onPress={() => alert("me")}
+                btnStyle={{
+                  justifyContent: "center",
+                  borderRadius: 20,
+                  marginHorizontal: 35,
+                  paddingVertical: 12,
+                  backgroundColor: "#fff",
+                  borderWidth: 1,
+                  borderColor: "#505050",
+                  width: "82%",
+                  alignItems: "center"
+                }}
+                icons={
+                  <Image
+                    source={require("@/assets/auth/google-logo.png")}
+                    style={{ width: 30, height: 30, resizeMode: "contain" }}
+                  />
+                }
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: "row",
+                gap: 10,
+                justifyContent: "center"
+              }}
+            >
+              <Text style={{ textAlign: "center", color: "white" }}>
+                Don't have an account?
+              </Text>
+              <Link href={"/(auth)/register"}>
+                <Text
+                  style={{
+                    textDecorationLine: "underline",
+                    color: APP_COLOR.PURPLE
+                  }}
+                >
+                  Register
+                </Text>
+              </Link>
+            </View>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </LinearGradient>
+    </ImageBackground>
   );
 };
 
-export default WelcomeScreen;
-
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    resizeMode: "cover"
+  },
+  overlay: {
+    flex: 1,
+    justifyContent: "flex-end"
+  },
   container: {
     flex: 1,
-    backgroundColor: "white"
+    paddingHorizontal: 10
   },
-  carouselContainer: {
-    flex: 0.8
-  },
-  buttonContainer: {
-    flex: 0.2,
+  welcomeText: {
+    flex: 0.6,
     alignItems: "center",
-    gap: 16,
-    paddingVertical: 50
+    justifyContent: "center"
   },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
+  welcomeBtn: {
+    flex: 0.4,
+    gap: 30
+  },
+  heading: {
+    fontSize: 40,
     fontWeight: "bold"
   },
-  loginButton: {
-    backgroundColor: APP_COLOR.PURPLE
+  body: {
+    fontSize: 30,
+    color: APP_COLOR.PURPLE,
+    marginVertical: 10
   },
-  registerButton: {
-    backgroundColor: "#4CAF50" // hoặc màu bạn muốn cho nút đăng ký
+  footer: {
+    color: "white"
   }
 });
+
+export default WelcomePage;

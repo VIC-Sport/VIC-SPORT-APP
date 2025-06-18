@@ -60,20 +60,21 @@ const RegisterScreen = () => {
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
           <View style={styles.container}>
-            <View style={{ padding: 5 }}>
+            <View style={{ marginVertical: 30, padding: 5 }}>
               <Text
                 style={{
                   fontSize: 25,
-                  fontWeight: 600,
-                  marginVertical: 30
+                  fontWeight: "bold",
+                  alignItems: "center"
                 }}
               >
-                Đăng ký tài khoản
+                Create an account
               </Text>
+              <Text>Welcome back, you've been missed!</Text>
             </View>
 
             <ShareInput
-              title="Họ tên"
+              title="Full Name"
               onChangeText={handleChange("name")}
               onBlur={handleBlur("name")}
               value={values.name}
@@ -98,9 +99,9 @@ const RegisterScreen = () => {
             <View style={{ marginVertical: 10 }}></View>
 
             <ShareButton
-              title="ĐĂNG KÝ"
+              title="Register"
               onPress={handleSubmit}
-              textStyle={{ color: "#fff", paddingVertical: 5 }}
+              textStyle={{ color: "black", paddingVertical: 5 }}
               btnStyle={{
                 justifyContent: "center",
                 borderRadius: 30,
@@ -122,17 +123,20 @@ const RegisterScreen = () => {
               }}
             >
               <Text style={{ textAlign: "center", color: "black" }}>
-                Đã có tài khoản?
+                Already a menber?
               </Text>
               <Link href={"/(auth)/login"}>
                 <Text
-                  style={{ textDecorationLine: "underline", color: "black" }}
+                  style={{
+                    textDecorationLine: "underline",
+                    color: APP_COLOR.PURPLE
+                  }}
                 >
-                  Đăng nhập.
+                  Login
                 </Text>
               </Link>
             </View>
-            <SocialButton title="Đăng ký với" />
+            <SocialButton title="Register with" />
           </View>
         )}
       </Formik>

@@ -1,5 +1,5 @@
-import { FontAwesome5 } from "@expo/vector-icons";
-import { StyleSheet, View } from "react-native";
+import { APP_COLOR } from "@/utils/constant";
+import { Image, StyleSheet, View } from "react-native";
 import ShareButton from "./share.button";
 import TextBetweenLine from "./text.between.line";
 
@@ -36,9 +36,15 @@ const SocialButton = (props: IProps) => {
           btnStyle={{
             justifyContent: "center",
             borderRadius: 30,
-            backgroundColor: "#fff"
+            backgroundColor: "#fff",
+            borderColor: APP_COLOR.PURPLE
           }}
-          icons={<FontAwesome5 name="facebook" size={30} color={"black"} />}
+          icons={
+            <Image
+              source={require("@/assets/auth/facebook-logo.png")}
+              style={{ width: 30, height: 30, resizeMode: "contain" }}
+            />
+          }
         />
 
         <ShareButton
@@ -49,9 +55,15 @@ const SocialButton = (props: IProps) => {
             justifyContent: "center",
             borderRadius: 30,
             paddingHorizontal: 20,
-            backgroundColor: "#fff"
+            backgroundColor: "#fff",
+            borderColor: APP_COLOR.PURPLE
           }}
-          icons={<FontAwesome5 name="google" size={30} color={"black"} />}
+          icons={
+            <Image
+              source={require("@/assets/auth/google-logo.png")}
+              style={{ width: 30, height: 30, resizeMode: "contain" }}
+            />
+          }
         />
       </View>
     </View>
