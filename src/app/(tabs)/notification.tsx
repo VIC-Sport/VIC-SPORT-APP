@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
   }
 });
 
-const HomeTab = () => {
+const NotificationTab = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <Text>hello world</Text>
+        <Text>NotificationTab world</Text>
       </View>
     </SafeAreaView>
   );
 };
 
-export default HomeTab;
+export default NotificationTab;

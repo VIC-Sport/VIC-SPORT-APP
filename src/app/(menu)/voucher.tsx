@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
   }
 });
 
-const HomeTab = () => {
+const Voucher = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <Text>hello world</Text>
+        <Text>Voucher</Text>
       </View>
     </SafeAreaView>
   );
 };
 
-export default HomeTab;
+export default Voucher;

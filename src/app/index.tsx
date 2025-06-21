@@ -30,7 +30,7 @@ const RootPage = () => {
           router.replace("/(tabs)");
         } else {
           //err
-          router.replace("/(auth)/welcome");
+          router.replace("/(auth)/intro1");
         }
       } catch (e) {
         console.warn(e);
@@ -43,7 +43,7 @@ const RootPage = () => {
   }, []);
 
   if (true) {
-    return <Redirect href={"/(auth)/verify"} />;
+    return <Redirect href={"/(auth)/intro1"} />;
   }
 };
 
