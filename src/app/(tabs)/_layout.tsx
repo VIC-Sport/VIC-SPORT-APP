@@ -1,10 +1,5 @@
 import { APP_COLOR } from "@/utils/constant";
-import {
-  Feather,
-  FontAwesome6,
-  Ionicons,
-  SimpleLineIcons
-} from "@expo/vector-icons";
+import { Feather, Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
 const TabLayout = () => {
@@ -35,16 +30,6 @@ const TabLayout = () => {
           name="calendar-clear-outline"
           size={size}
           color={APP_COLOR.GREY}
-        />
-      );
-    }
-
-    if (routeName === "featured") {
-      return (
-        <FontAwesome6
-          name="ranking-star"
-          size={size}
-          color={focused ? APP_COLOR.PURPLE : APP_COLOR.GREY}
         />
       );
     }

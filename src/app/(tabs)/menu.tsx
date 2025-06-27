@@ -33,6 +33,9 @@ const MenuTab = () => {
         if (item.title === "Voucher") {
           router.push("/(menu)/voucher");
         }
+        if (item.title === "Register to be a field owner") {
+          router.push("/(menu)/registerOwner");
+        }
       }}
     >
       <View style={styles.itemLeft}>
